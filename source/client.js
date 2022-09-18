@@ -5,7 +5,7 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 }
 else {
     navigator.mediaDevices.enumerateDevices()
-        .then(gotDeivces)
+        .then(gotDevices)
         .catch(handleError);
 }
 
