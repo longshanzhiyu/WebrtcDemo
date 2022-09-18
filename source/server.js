@@ -8,7 +8,7 @@ var options = {
     cert:   fs.readFileSync('../cert/cert.pem')
 }
 
-var app = https.ceateServer(options, function(req, res) {
+var app = https.createServer(options, function(req, res) {
     res.writeHead();
     res.end('HTTPS: Hello World!\n');
 }).listen(443, '0.0.0.0');
