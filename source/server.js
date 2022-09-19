@@ -16,8 +16,8 @@ var http_server = http.createServer(app);
 http_server.listen(80, '0.0.0.0');
 
 var options = {
-    key:    fs.readFileSync('../cert/fbird.xyz.key'),
-    cert:   fs.readFileSync('../cert/fbird.xyz.crt')
+    key:    fs.readFileSync('../cert/key.pem'),
+    cert:   fs.readFileSync('../cert/cert.pem')
 }
 
 //https server
