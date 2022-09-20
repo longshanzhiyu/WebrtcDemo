@@ -92,7 +92,7 @@ function start() {
 				facingMode: 'enviroment',
 				deviceId : deviceId ? {exact:deviceId} : undefined 
 			}, 
-			audio : false 
+			audio : true 
 		}
 
 		navigator.mediaDevices.getUserMedia(constraints)
