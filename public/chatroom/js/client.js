@@ -8,6 +8,7 @@ var btnLeave = document.querySelector('button#leave');
 var outputArea = document.querySelector('textarea#output');
 var inputArea = document.querySelector('textarea#input');
 var btnSend = document.querySelector('button#send');
+var io = require('socket.io-client');
 
 var socket;
 var room;
@@ -16,7 +17,7 @@ btnConnect.onclick = ()=>{
 
     
 	//connect
-    var socketIo = require('socket.io-client');
+    
     console.log (io);
 	// socket = io.connect(); 
 	
