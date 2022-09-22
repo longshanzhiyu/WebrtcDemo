@@ -27,7 +27,7 @@ var options = {
 var https_server = https.createServer(options, app);
 
 //bind socket.io with https_server
-var io = socketIo.createServer(https_server);
+var io = socketIo(https_server, {});
 
 //connection
 // io.sockets.on('connection', (socket)=>{
