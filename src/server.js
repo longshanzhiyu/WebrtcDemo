@@ -31,7 +31,7 @@ var https_server = https.createServer(options, app);
 socketIo.listen(https_server);
 
 //connection
-io.sockets.on('connection', (socket)=>{
+socketIo.sockets.on('connection', (socket)=>{
     console.log('connected: ' + socket )
 	socket.on('join', (room)=> {
 		socket.join(room);
