@@ -27,12 +27,11 @@ var options = {
 var https_server = https.createServer(options, app);
 
 //bind socket.io with https_server
-// var io = socketIo();
-socketIo.listen(https_server);
+var io = socketIo.listen(https_server);
 
 //connection
-socketIo.sockets.on('connection', (socket)=>{
-    console.log('connected: ' + socket )
+io.sockets.on('connection', (socket)=>{
+    // console.log('connected: ' + socket )
 	socket.on('join', (room)=> {
 		socket.join(room);
 		var myRoom = io.sockets.adapter.rooms[room];
