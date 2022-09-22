@@ -1,4 +1,5 @@
 'use strict'
+
 //
 var userName = document.querySelector('input#username');
 var inputRoom = document.querySelector('input#room');
@@ -7,7 +8,6 @@ var btnLeave = document.querySelector('button#leave');
 var outputArea = document.querySelector('textarea#output');
 var inputArea = document.querySelector('textarea#input');
 var btnSend = document.querySelector('button#send');
-var io = require(['socket.io-client']);
 
 var socket;
 var room;
