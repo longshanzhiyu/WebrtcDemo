@@ -17,9 +17,9 @@ btnConnect.onclick = ()=>{
     
 	//connect
     
-    console.log (io);
-	// socket = io.connect(); 
-	
+    
+	socket = io.connect(); 
+	console.log (socket);
 	// //recieve message
 	// socket.on('joined', (room, id) => {
 	// 	btnConnect.disabled = true;
