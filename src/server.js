@@ -31,7 +31,7 @@ var io = socketIo(https_server);
 
 //connection
 io.sockets.on('connection', (socket)=>{
-    // console.log('connected: ' + socket )
+    console.log('connected: ' + socket )
 	socket.on('join', (room)=> {
 		socket.join(room);
 		var myRoom = io.sockets.adapter.rooms[room];
