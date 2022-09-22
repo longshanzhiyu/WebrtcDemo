@@ -1,7 +1,4 @@
 'use strict'
-
-import {io} from 'socket.io-client';
-
 //
 var userName = document.querySelector('input#username');
 var inputRoom = document.querySelector('input#room');
@@ -10,6 +7,7 @@ var btnLeave = document.querySelector('button#leave');
 var outputArea = document.querySelector('textarea#output');
 var inputArea = document.querySelector('textarea#input');
 var btnSend = document.querySelector('button#send');
+var io = require(['socket.io-client']);
 
 var socket;
 var room;
@@ -18,8 +16,9 @@ btnConnect.onclick = ()=>{
 
     
 	//connect
-	socket = io.connect(); 
-	console.log (socket);
+    
+    console.log (io);
+	// socket = io.connect(); 
 	
 	// //recieve message
 	// socket.on('joined', (room, id) => {
