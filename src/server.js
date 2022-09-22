@@ -5,7 +5,6 @@ var https = require('https');
 var fs = require('fs');
 
 //socket.io
-var socketIo = require('socket.io');
 
 var express = require('express');
 var serveIndex = require('serve-index');
