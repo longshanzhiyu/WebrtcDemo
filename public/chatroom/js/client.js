@@ -14,7 +14,9 @@ var room;
 
 btnConnect.onclick = ()=>{
 
+    
 	//connect
+    const io = require("socket.io-client");
 	socket = io.connect(); 
 	
 	//recieve message
