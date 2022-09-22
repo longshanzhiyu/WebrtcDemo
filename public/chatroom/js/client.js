@@ -13,45 +13,18 @@ var socket;
 var room;
 
 btnConnect.onclick = ()=>{
+	const socket = io.connect();
 
-    
-	//connect
-    
-    
-	socket = io.connect(); 
-	console.log (socket);
-	// //recieve message
-	// socket.on('joined', (room, id) => {
-	// 	btnConnect.disabled = true;
-	// 	btnLeave.disabled = false;
-	// 	inputArea.disabled = false;
-	// 	btnSend.disabled = false;
-	// });	
-	
-	// socket.on('leaved', (room, id) => {
-	// 	btnConnect.disabled = false;
-	// 	btnLeave.disabled = true;
-	// 	inputArea.disabled = true;
-	// 	btnSend.disabled = true;
+	// 监听消息
+	socket.on('message', (msg) => {
+		console.log('client on message:' + msg);
+	})
 
-	// 	socket.disconnect();
-	// });	
-
-	// socket.on('message', (room, id, data) => {
-	// 	outputArea.scrollTop = outputArea.scrollHeight;//窗口总是显示最后的内容
-	// 	outputArea.value = outputArea.value + data + '\r';
-	// });	
-
-	// socket.on('disconnect', (socket)=>{
-	// 	btnConnect.disabled = false;
-	// 	btnLeave.disabled = true;
-	// 	inputArea.disabled = true;
-	// 	btnSend.disabled = true;
-	// });
-
-	// //send message
-	// room = inputRoom.value;
-	// socket.emit('join', room);
+	// 发送消息
+	var sendMessage = () => {
+		console.log('发送消息');
+		socket.emit('message', 'test msg');
+	}
 }
 
 btnSend.onclick = ()=>{
