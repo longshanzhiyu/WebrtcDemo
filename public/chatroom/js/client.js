@@ -14,6 +14,7 @@ var room;
 
 btnConnect.onclick = ()=>{
 	const socket = io.connect();
+	console.log(socket);
 
 	// 监听消息
 	socket.on('message', (msg) => {
@@ -28,24 +29,24 @@ btnConnect.onclick = ()=>{
 }
 
 btnSend.onclick = ()=>{
-	var data = inputArea.value;
-	data = userName.value + ':' + data;
-	socket.emit('message', room, data);
-	inputArea.value = '';
+	// var data = inputArea.value;
+	// data = userName.value + ':' + data;
+	// socket.emit('message', room, data);
+	// inputArea.value = '';
 }
 
 btnLeave.onclick = ()=>{
-	room = inputRoom.value;
-	socket.emit('leave', room);
+	// room = inputRoom.value;
+	// socket.emit('leave', room);
 }
 
 inputArea.onkeypress = (event)=> {
     //event = event || window.event;
-    if (event.keyCode == 13) { //回车发送消息
-	var data = inputArea.value;
-	data = userName.value + ':' + data;
-	socket.emit('message', room, data);
-	inputArea.value = '';
-	event.preventDefault();//阻止默认行为
-    }
+    // if (event.keyCode == 13) { //回车发送消息
+	// var data = inputArea.value;
+	// data = userName.value + ':' + data;
+	// socket.emit('message', room, data);
+	// inputArea.value = '';
+	// event.preventDefault();//阻止默认行为
+    // }
 }
