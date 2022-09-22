@@ -17,40 +17,41 @@ btnConnect.onclick = ()=>{
     
 	//connect
     const io = require("socket.io-client");
-	socket = io.connect(); 
+    console.log (io);
+	// socket = io.connect(); 
 	
-	//recieve message
-	socket.on('joined', (room, id) => {
-		btnConnect.disabled = true;
-		btnLeave.disabled = false;
-		inputArea.disabled = false;
-		btnSend.disabled = false;
-	});	
+	// //recieve message
+	// socket.on('joined', (room, id) => {
+	// 	btnConnect.disabled = true;
+	// 	btnLeave.disabled = false;
+	// 	inputArea.disabled = false;
+	// 	btnSend.disabled = false;
+	// });	
 	
-	socket.on('leaved', (room, id) => {
-		btnConnect.disabled = false;
-		btnLeave.disabled = true;
-		inputArea.disabled = true;
-		btnSend.disabled = true;
+	// socket.on('leaved', (room, id) => {
+	// 	btnConnect.disabled = false;
+	// 	btnLeave.disabled = true;
+	// 	inputArea.disabled = true;
+	// 	btnSend.disabled = true;
 
-		socket.disconnect();
-	});	
+	// 	socket.disconnect();
+	// });	
 
-	socket.on('message', (room, id, data) => {
-		outputArea.scrollTop = outputArea.scrollHeight;//窗口总是显示最后的内容
-		outputArea.value = outputArea.value + data + '\r';
-	});	
+	// socket.on('message', (room, id, data) => {
+	// 	outputArea.scrollTop = outputArea.scrollHeight;//窗口总是显示最后的内容
+	// 	outputArea.value = outputArea.value + data + '\r';
+	// });	
 
-	socket.on('disconnect', (socket)=>{
-		btnConnect.disabled = false;
-		btnLeave.disabled = true;
-		inputArea.disabled = true;
-		btnSend.disabled = true;
-	});
+	// socket.on('disconnect', (socket)=>{
+	// 	btnConnect.disabled = false;
+	// 	btnLeave.disabled = true;
+	// 	inputArea.disabled = true;
+	// 	btnSend.disabled = true;
+	// });
 
-	//send message
-	room = inputRoom.value;
-	socket.emit('join', room);
+	// //send message
+	// room = inputRoom.value;
+	// socket.emit('join', room);
 }
 
 btnSend.onclick = ()=>{
