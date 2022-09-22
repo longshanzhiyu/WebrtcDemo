@@ -16,7 +16,7 @@ btnConnect.onclick = ()=>{
 
     
 	//connect
-    const io = require("socket.io-client");
+    var socketIo = require('socket.io-client');
     console.log (io);
 	// socket = io.connect(); 
 	
