@@ -13,40 +13,63 @@ var socket;
 var room;
 
 btnConnect.onclick = ()=>{
-	const socket = io.connect();
-	console.log(socket);
 
-	// 监听消息
-	socket.on('message', (msg) => {
-		console.log('client on message:' + msg);
-	})
+	//connect
+	socket = io.connect(); 
+	
+	//recieve message
+	socket.on('joined', (room, id) => {
+		btnConnect.disabled = true;
+		btnLeave.disabled = false;
+		inputArea.disabled = false;
+		btnSend.disabled = false;
+	});	
+	
+	socket.on('leaved', (room, id) => {
+		btnConnect.disabled = false;
+		btnLeave.disabled = true;
+		inputArea.disabled = true;
+		btnSend.disabled = true;
 
-	// 发送消息
-	var sendMessage = () => {
-		console.log('发送消息');
-		socket.emit('message', 'test msg');
-	}
+		socket.disconnect();
+	});	
+
+	socket.on('message', (room, id, data) => {
+		outputArea.scrollTop = outputArea.scrollHeight;//窗口总是显示最后的内容
+		outputArea.value = outputArea.value + data + '\r';
+	});	
+
+	socket.on('disconnect', (socket)=>{
+		btnConnect.disabled = false;
+		btnLeave.disabled = true;
+		inputArea.disabled = true;
+		btnSend.disabled = true;
+	});
+
+	//send message
+	room = inputRoom.value;
+	socket.emit('join', room);
 }
 
 btnSend.onclick = ()=>{
-	// var data = inputArea.value;
-	// data = userName.value + ':' + data;
-	// socket.emit('message', room, data);
-	// inputArea.value = '';
+	var data = inputArea.value;
+	data = userName.value + ':' + data;
+	socket.emit('message', room, data);
+	inputArea.value = '';
 }
 
 btnLeave.onclick = ()=>{
-	// room = inputRoom.value;
-	// socket.emit('leave', room);
+	room = inputRoom.value;
+	socket.emit('leave', room);
 }
 
 inputArea.onkeypress = (event)=> {
     //event = event || window.event;
-    // if (event.keyCode == 13) { //回车发送消息
-	// var data = inputArea.value;
-	// data = userName.value + ':' + data;
-	// socket.emit('message', room, data);
-	// inputArea.value = '';
-	// event.preventDefault();//阻止默认行为
-    // }
+    if (event.keyCode == 13) { //回车发送消息
+	var data = inputArea.value;
+	data = userName.value + ':' + data;
+	socket.emit('message', room, data);
+	inputArea.value = '';
+	event.preventDefault();//阻止默认行为
+    }
 }
