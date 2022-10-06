@@ -14,9 +14,6 @@ var room;
 
 btnConnect.onclick = ()=>{
 
-
-	console.log('connect clicked');
-
 	//connect
 	socket = io.connect(); 
 	
