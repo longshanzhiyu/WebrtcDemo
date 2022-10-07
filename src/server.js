@@ -56,6 +56,11 @@ var logger = log4js.getLogger();
 //connection
 io.sockets.on('connection', (socket)=>{
     // console.log('connected: ' + socket )
+
+	socket.on('message', (room, data)=>{
+		socket.to(room).emit('message', room, socket.id, data)//房间内所有人,除自己外
+	});
+
 	socket.on('join', (room)=> {
 		socket.join(room);
 		var myRoom = io.sockets.adapter.rooms[room];
